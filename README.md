@@ -34,15 +34,80 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+1. Open Quartus Prime software.
+
+2. Create a new project using **File → New Project Wizard**.
+
+3. Enter the project name and select the project location.
+
+4. Choose the target FPGA device and click **Finish**.
+
+5. Create a new Verilog HDL file using
+   **File → New → Verilog HDL File**.
+
+6. Type the Verilog code for the SR Flip-Flop using case statement/behavioral modeling.
+
+7. Save the file with the module name
+   (Example: `D6.v`).
+
+8. Set the created module as the **Top-Level Entity**.
+
+9. Compile the design using
+   **Processing → Start Compilation**.
+
+10. Verify whether the compilation is successful and check for errors.
+
+11. Open **University Program Waveform Editor** or use a testbench file for simulation.
+
+12. Apply different combinations of inputs **S** and **R** along with clock pulse.
+
+13. Run the simulation and observe the output waveform for **Q** and **Qbar**.
+
+14. Verify the obtained outputs using the SR Flip-Flop truth table.
+
+15. Observe the RTL schematic and timing diagram generated after compilation and simulation.
+
+16. Conclude that the SR Flip-Flop operation is verified successfully.
+
+
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+ Developed by: Sujin M L
+ 
+ RegisterNumber: 212225040435
+
+```
+module D6(S, R, clk, Q, Qbar);
+
+input S, R, clk;
+output reg Q;
+output Qbar;
+
+assign Qbar = ~Q;
+
+initial
+begin
+    Q = 0;
+end
+
+always @(posedge clk)
+begin
+    Q <= S | ((~R) & Q);
+end
+
+endmodule
+
+```
+
 
 **RTL LOGIC FOR FLIPFLOPS**
+<img width="1919" height="1079" alt="Screenshot 2026-05-24 152923" src="https://github.com/user-attachments/assets/35a6d25c-2178-439a-83e1-d13a87be1a89" />
+
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+<img width="1919" height="1079" alt="Screenshot 2026-05-24 153129" src="https://github.com/user-attachments/assets/8381463e-24b2-4777-9f71-e09e6bae8205" />
 
 **RESULTS**
+
+Thus, the SR Flip-Flop was successfully implemented using Verilog HDL in Quartus Prime and its functionality was verified using the functional/truth table and simulation waveforms.
